@@ -2,3 +2,8 @@
 .Rhistory
 .RData
 .DS_Store
+.synctex.gz
+.toc
+.nav
+.log
+.snm
