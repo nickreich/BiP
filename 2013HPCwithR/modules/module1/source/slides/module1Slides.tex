@@ -37,6 +37,8 @@
 	\titlepage
 \end{frame}
 
+
+
 %	******	Everything through the above line must be placed at
 %		the top of any TeX file using the statsTeachR standard
 %		beamer preamble. 
@@ -46,10 +48,89 @@
 
 \end{frame}
 
-\begin{frame}{Tools for reproducible research}
+\section{Tools for reproducible research}
+\begin{frame}{Dyanamic R Reports}
+\begin{itemize}
+\item Dynamic R documents allow a user to combine text, R code, and R output, including tables and figures, into one document.
+\item Why is this useful? 
+\begin{itemize}
+\item Writing code and producing reports are now one document rather than many.
+\item When the analysis changes, the results in the report change automatically.  
+\item What else?
+\end{itemize}
+\item There are several options for how to do this.  
+\begin{itemize}
+\item R Markdown
+\item Sweave
+\item knitr
+\end{itemize}
+\end{itemize}
+%``dynamic documents''
+%R markdown
+%Sweave
+%knitr
+\end{frame}
 
-``dynamic documents''
 
+\begin{frame}{Dyanamic R Reports: Summary}
+\begin{itemize}
+\item R Markdown: creates HTML document
+\item Sweave: creates pdf document AND incorporates LaTeX
+\item knitr: $\approx$ Sweave + cacheSweave + pgfSweave + weaver + animation::saveLatex + R2HTML::RweaveHTML + highlight::HighlightWeaveLatex + 0.2 * brew + 0.1 * SweaveListingUtils + more
+\end{itemize}
+%``dynamic documents''
+%R markdown
+%Sweave
+%knitr
+\end{frame}
+
+\begin{frame}{R Markdown}
+\begin{itemize}
+\item R Markdown creates HTML files  
+\item Reference: http://www.rstudio.com/ide/docs/authoring/using\_markdown
+\item Markdown files (.Rmd) act just like text files, except they allow a user to embed R code in chunks
+\item The syntax for a chunk in R Markdown:
+\end{itemize}
+Regular text \\
+```\{r\}\\
+Code goes here\\
+```\\
+\end{frame}
+
+\begin{frame}{Sweave}
+\begin{itemize}
+\item Sweave creates pdf files as output
+\item Reference: http://leisch.userweb.mwn.de/Sweave/
+\item Sweave Manual: http://www.stat.uni-muenchen.de/~leisch/Sweave/Sweave-manual.pdf
+\item Sweave not only integrates R code, but also LaTeX!
+\item The syntax for a chunk in Sweave:
+\end{itemize}
+Regular text with \$LaTeX\$ if you want it.\\
+\textless\textless OPTIONS \textgreater\textgreater=\\
+Code goes here\\
+@\\
+\end{frame}
+
+\begin{frame}{Sweave: Options}
+\begin{itemize}
+\item fig=TRUE (or FALSE): This indicates that the code in the chunk will print the figure to the output pdf document
+\item echo=TRUE (or FALSE): Should the R input code be displayed in the output pdf document
+\item eval=TRUE (or FALSE): Should the R input code be evaluated
+\end{itemize}
+%Split and label?
+%reuse code chunks?
+\end{frame}
+
+
+
+\begin{frame}{knitr}
+\begin{itemize}
+\item Created by Ph.D. student Yihui Xie (what have you done?) 
+\item knitr creates pdf files as output.
+\item It also allows the use of LaTeX, like Sweave, whereas R Markown does not.  
+\item Syntax for knitr is largely the same as Sweave.
+\item Xie describes knitr $\approx$ Sweave + cacheSweave + pgfSweave + weaver + animation::saveLatex + R2HTML::RweaveHTML + highlight::HighlightWeaveLatex + 0.2 * brew + 0.1 * SweaveListingUtils + more
+\end{itemize}
 \end{frame}
 
 

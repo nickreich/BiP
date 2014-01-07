@@ -1,0 +1,69 @@
+\documentclass{beamer}
+
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+\title[] % (optional, use only with long paper titles)
+%{Modern Approaches to Missing Data: R Introduction}
+{Intermediate Biostatistics - Public Health 640\\ Notes 2}
+% \subtitle
+% {for Graduate Students} % (optional)
+
+
+%\author[Ofer Harel] % (optional, use only with lots of authors)
+%{Ofer Harel\inst{1} and  Gregory Matthews\inst{2}}
+
+\author{Gregory Matthews $^{1}$ }
+
+
+%  \inst{1}
+  %Department of Statistics\\
+  %University of Connecticut
+
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+\institute [UMass] % (optional, but mostly needed)
+{
+  $^{1}$Department of Biostatistics\\
+  University of Massachusetts
+}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date[Spring 2014] % (optional)
+{Spring 2014} %Date / Occasion}
+
+
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents
+  % You might wish to add the option
+  % [pausesections]
+\end{frame}
+
+\begin{frame}{Basic shell commands}
+\begin{itemize}
+\item cat
+\item cd
+\item cp AND mv
+\item grep
+kill, ps, ls, man (like help in R.), pwd, rm, head
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item 
+\end{itemize}
+\end{frame}
+
+\end{document}
