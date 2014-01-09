@@ -16,7 +16,7 @@
 %		(Currently unused, may be used in future.)
 \newcommand{\ModuleShortname}{shortName}
 %	Global variable containing author name:
-\author{Eric A. Cohen}
+\author{Gregory J. Matthews}
 %	Global variable containing text of license terms:
 \newcommand{\LicenseText}{Made available under the Creative Commons Attribution-ShareAlike 3.0 Unported License: http://creativecommons.org/licenses/by-sa/3.0/deed.en\textunderscore US }
 %	Instructor: optional, can leave blank.
@@ -41,92 +41,79 @@
 %		the top of any TeX file using the statsTeachR standard
 %		beamer preamble. 
 
-
-
-
-
 \begin{frame}{Overview}
+\begin{itemize}
+\item stuff
+\end{itemize}
+\end{frame}
 
-	\begin{block}{Diagnostic Test}
-		Tool for deciding on something you want to know --- the true status of some outcome --- based on something you can measure.
 
-		\begin{itemize}
+\begin{frame}{Accessing the MGHPCC}
+\begin{itemize}
+\item Register for the MGHPCC (for UMass): https://www.umassrc.org/hpc/
+\item You need: a login and a password
+\item Logging in: ssh username@ghpcc06.umassrc.org
+\end{itemize}
+\end{frame}
 
-			\item{Deciding whether someone has tuberculosis (the outcome) based on the presence or size of a raised swelling (the test) following tuberculin injection.}
 
-			\item{Deciding whether an infant has phenylketonuria (the outcome) based on the blood level of phenylalanine (the test).}
+\begin{frame}{Accessing the MGHPCC}
+\begin{itemize}
+\item Register for the MGHPCC (for UMass): https://www.umassrc.org/hpc/
+\item You need: a login and a password
+\item Logging in: ssh username@ghpcc06.umassrc.org
+\item NOTE: You can only access the MGHPCC if you are on UMass's network (physically on campus or VPN)
+\end{itemize}
+\end{frame}
 
-			\item{Deciding whether an infant has phenylketonuria (the outcome) based on the odor of the urine (same outcome of interest, different test).}
-		\end{itemize}
 
-	\end{block}
+\begin{frame}{Software}
+\begin{itemize}
+\item Once logged in, you will be placed in your home directory
+\item In order to use software, you'll need to load modules.  
+\item List of available software: http://wiki.umassrc.org/wiki/index.php/Provided\_Software
+\item We are interested in using R here.  
+\item So we need "module load R/3.0.1"
+\item We can also unload a module.  "module unload R"
+\end{itemize}
+\end{frame}
 
+
+\begin{frame}{LSF common commands}
+\begin{itemize}
+\item bsub - submit a job
+\item bkill - kill a job
+\item bjobs - view status of jobs
+\item bpeek - view output / error files
+\item bhist - job history
+\item bqueues - available queues
+\end{itemize}
 \end{frame}
 
 
 
-\begin{frame}{The Gold Standard}
 
-In evaluating a test, must compare results to some ``truth''.
-
-This is provided by the best possible test --- the \emph{gold standard} or \emph{criterion standard} test.
-
-\medskip
-
-	\begin{block}{Why Not Use the Gold Standard?}
-
-		 May be expensive, invasive, or impractical.
-
-		\begin{itemize}
-
-			\item{Gold-standard test for pancreatic cancer involves biopsy of the pancreas;}
-			\item{Gold-standard test for Alzheimer's disease is post-mortem brain autopsy.}
-
-		\end{itemize}
-
-	\end{block}
-
+\begin{frame}{Batch Mode}
+\begin{itemize}
+\item Rather than running R code interactively, we can also run R in BATCH mode.  
+\item At the prompt, we submit a job by typing: R CMD BATCH filename.R
+\end{itemize}
 \end{frame}
 
 
 
-\begin{frame}{Sensitivity and Specificity}
-
-\taburulecolor{MainColorMedium}
-\tabulinesep=1.5ex
-\begin{tabu} to 1.0\textwidth[r]{X[,L,]X[,L,]}
-	\rowcolor{MainColorLight}\strong{Sensitivity}                                                                    	&
-	\strong{Specificity}
-\\
-	How good is this test at \textit{detecting cases} of this condition?
-	&
-	How good is this test at giving a \textit{clean bill of health} to those \textit{without} the condition?
-\\\hline
-	What proportion, of those with the condition, test positive for the condition?
-	&
-	What proportion, of those without the condition, test negative for the condition?
-\\\hline
-	\vspace{-3ex}\begin{displaymath}\frac{true\ positives}{positives\ in\ population}\end{displaymath}\vspace{-3ex}
-	&
-	\vspace{-3ex}\begin{displaymath}\frac{true\ negatives}{negatives\ in\ population}\end{displaymath}\vspace{-3ex}
-\\\hline
-	\begin{math}
-		Pr(T^{+} \mid D^{+})
-	\end{math}
-	\newline
-	$T^{+}$ --- positive test;\newline
-	$D^{+}$ --- disease
-	&
-	\begin{math}
-		Pr(T^{-} \mid D^{-})
-	\end{math}
-	\newline
-	$T^{-}$ --- negative test;\newline
-	$D^{+}$ --- no disease
-\\
-\end{tabu}
-
+\begin{frame}{Batch Mode}
+\begin{itemize}
+\item Once we have a .R file that we want to run we can submit it to the LSF job scheduler.  
+\item What actually gets submited to the LSF scheduler is a shell script.  
+\item We need to create a file that contains all of the code we would have run at the shell prompt.  
+\end{itemize}
+##Example Shell Script\\
+module load R/3.0.1\\
+R CMD BATCH filename.R\\
 \end{frame}
+
+
 
 
 \end{document}
