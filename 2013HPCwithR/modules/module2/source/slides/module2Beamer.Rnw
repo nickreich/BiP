@@ -1,11 +1,8 @@
-% %        ************************************************
-% %        **	LaTeX preamble to be used with all 
-% %	**	statsTeachR labs/handouts.
-% %
-% %	Author: Eric A. Cohen
-% %	Last modified: 22 August 2013
-% %	************************************************
-% 
+%% Module 2 beamer/knitr slides
+%% Biostatistics in Practice workshop, January 2014
+%% Nicholas Reich: nick [at] schoolph.umass.edu
+
+
 \documentclass[table]{beamer}
 
 
