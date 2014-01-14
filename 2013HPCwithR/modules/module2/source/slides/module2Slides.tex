@@ -1,0 +1,131 @@
+%	Use the standard preamble for Beamer slides of all 
+%		statsTeachR modules
+%		(\input, not \include, as \include can't access 
+%		things in higher-level directories since it needs 
+%		write permission there, which it doesn't have; and 
+%		in some settings the preamble may be in a higher-level
+%		directory than the source file.)
+%	This path assumes the preamble is in the parent directory,
+%		modify this if that changes.
+\input{../standard_beamer_preamble}
+
+%	The following variables are assumed by the standard preamble:
+%	Global variable containing module name:
+\title{Simulation and parallelization in R}
+%	Global variable containing module shortname:
+%		(Currently unused, may be used in future.)
+\newcommand{\ModuleShortname}{simPar}
+%	Global variable containing author name:
+\author{Nicholas G Reich}
+%	Global variable containing text of license terms:
+\newcommand{\LicenseText}{Made available under the Creative Commons Attribution-ShareAlike 3.0 Unported License: http://creativecommons.org/licenses/by-sa/3.0/deed.en\textunderscore US }
+%	Instructor: optional, can leave blank.
+%		Recommended format: {Instructor: Jane Doe}
+\newcommand{\Instructor}{}
+%	Course: optional, can leave blank.
+%		Recommended format: {Course: Biostatistics 101}
+\newcommand{\Course}{}
+
+
+
+%	******	Document body begins here	**********************
+
+\begin{document}
+
+%	Title page
+\begin{frame}[plain]
+	\titlepage
+\end{frame}
+
+%	******	Everything through the above line must be placed at
+%		the top of any TeX file using the statsTeachR standard
+%		beamer preamble. 
+
+
+\begin{frame}{Module learning goals}
+
+	\begin{block}{At the end of this module you should be able to...}
+		
+
+		\begin{itemize}
+
+			\item{Simulate data from a parametric distribution.}
+
+			\item{Formulate a statistical model and simulate data from it.}
+
+			\item{Design and implement a simulation experiment to test a hypothesis.}
+                        
+                        \item{Run simulations in parallel, when appropriate.}
+                        
+		\end{itemize}
+
+	\end{block}
+
+\end{frame}
+
+
+
+\begin{frame}{What is simulation?}
+
+
+
+        \begin{block}{Definitions}
+		
+
+		\begin{itemize}
+
+			\item{Broadly: ``The technique of imitating the behaviour of some situation or process (whether economic, military, mechanical, etc.) by means of a suitably analogous situation or apparatus, esp. for the purpose of study or personnel training.'' (from the {\em OED})}
+
+			\item{In science: Creating a model that imitates a physical or biological process.}
+
+        		\item{In statistics: The generation of data from a model using rules of probability.}
+                                                
+		\end{itemize}
+
+	\end{block}
+
+\end{frame}
+
+
+
+\begin{frame}{What simulations have you run?}
+
+
+        \begin{itemize}
+
+                \item Drawing pseudo-random numbers from a probability distribution (e.g. proposal distributions, ...).
+                
+                \item Generating data from a specified model (e.g. building a template dataset, calculating statistical power).
+                
+                \item Resampling existing data (e.g. permutation, bootstrap).
+
+        \end{itemize}
+
+\vskip2em
+
+\begin{block}{In the right setting, any of the above methods can be used in a data analysis.}
+\end{block}
+\end{frame}
+
+\begin{frame}{Key simulation functions in R}
+
+
+\begin{block}{{\tt rnorm()}, {\tt rpois()}, etc...}
+
+Built-in functions for simulating data from known parametric distributions.
+
+\end{block}
+
+
+\begin{block}{{\tt sample()}}
+
+Base R function for sampling data (with or without replacement).
+
+
+
+\end{block}
+
+
+\end{frame}
+
+\end{document}

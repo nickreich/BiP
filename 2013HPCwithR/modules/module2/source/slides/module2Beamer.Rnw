@@ -1,0 +1,165 @@
+% %        ************************************************
+% %        **	LaTeX preamble to be used with all 
+% %	**	statsTeachR labs/handouts.
+% %
+% %	Author: Eric A. Cohen
+% %	Last modified: 22 August 2013
+% %	************************************************
+% 
+\documentclass[table]{beamer}
+
+
+\input{../standard_knitr_beamer_preamble}
+
+%        The following variables are assumed by the standard preamble:
+%	Global variable containing module name:
+\title{Simulation and parallelization in R}
+%	Global variable containing module shortname:
+%		(Currently unused, may be used in future.)
+\newcommand{\ModuleShortname}{simPar}
+%	Global variable containing author name:
+\author{Nicholas G Reich}
+%	Global variable containing text of license terms:
+\newcommand{\LicenseText}{Made available under the Creative Commons Attribution-ShareAlike 3.0 Unported License: http://creativecommons.org/licenses/by-sa/3.0/deed.en\textunderscore US }
+%	Instructor: optional, can leave blank.
+%		Recommended format: {Instructor: Jane Doe}
+\newcommand{\Instructor}{}
+%	Course: optional, can leave blank.
+%		Recommended format: {Course: Biostatistics 101}
+\newcommand{\Course}{}
+
+
+
+\begin{document}
+
+<<setup, include=FALSE>>=
+library(knitr)
+opts_chunk$set(fig.path='figure/beamer-',fig.align='center',fig.show='hold',size='footnotesize')
+@
+
+
+\begin{frame}[plain]
+        \titlepage
+\end{frame}
+
+
+\begin{frame}{Module learning goals}
+
+        \begin{block}{At the end of this module you should be able to...}
+		
+
+		\begin{itemize}
+
+			\item{Simulate data from a parametric distribution.}
+
+			\item{Formulate a statistical model and simulate data from it.}
+
+			\item{Design and implement a simulation experiment to test a hypothesis.}
+                        
+                        \item{Run simulations in parallel, when appropriate.}
+                        
+		\end{itemize}
+
+	\end{block}
+
+\end{frame}
+
+
+\begin{frame}{What is simulation?}
+
+
+
+        \begin{block}{Definitions}
+        	
+
+		\begin{itemize}
+
+			\item{Broadly: ``The technique of imitating the behaviour of some situation or process (whether economic, military, mechanical, etc.) by means of a suitably analogous situation or apparatus, esp. for the purpose of study or personnel training.'' (from the {\em OED})}
+
+			\item{In science: Creating a model that imitates a physical or biological process.}
+
+        		\item{In statistics: The generation of data from a model using rules of probability.}
+                                                
+		\end{itemize}
+
+	\end{block}
+
+\end{frame}
+
+
+
+\begin{frame}{What simulations have you run?}
+
+
+        \begin{itemize}
+
+                \item Drawing pseudo-random numbers from a probability distribution (e.g. proposal distributions, ...).
+                
+                \item Generating data from a specified model (e.g. building a template dataset, calculating statistical power).
+                
+                \item Resampling existing data (e.g. permutation, bootstrap).
+
+        \end{itemize}
+
+\vskip2em
+
+\begin{block}{In the right setting, any of the above methods can be used in a data analysis.}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Random number generation in R}
+
+
+\begin{block}{{\tt rnorm()}, {\tt rpois()}, etc...}
+
+Built-in functions for simulating data from known parametric distributions.
+
+<<paramSim, out.width='.45\\linewidth'>>=
+x <- rnorm(100, mean=10, sd=5)
+(p <- rpois(5, lambda=25))
+@
+
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Resampling data in R}
+
+\begin{block}{{\tt sample()}}
+
+Base R function for sampling data (with or without replacement).
+<<sample>>=
+p
+sample(p, replace=FALSE)
+sample(p, replace=TRUE)
+@
+
+
+\end{block}
+
+
+\end{frame}
+
+
+%%%%%%%% IMPORTANT -- MUST HAVE [fragile] for some/all frames chunks to have output work correctly. 
+
+\begin{frame}[fragile]{Second Test}
+
+Text is nice but let's see what happens if we make a couple of plots
+in our chunk:
+
+<<boring-plots,fig.width=4,fig.height=4,out.width='.45\\linewidth'>>=
+x <- rnorm(200)
+par(las=1,mar=c(4,4,.1,.1))  # tick labels direction
+boxplot(x) 
+hist(x,main='',col="blue",probability=TRUE) 
+lines(density(x),col="red")
+@
+\end{frame}
+
+
+
+
+
+\end{document}
