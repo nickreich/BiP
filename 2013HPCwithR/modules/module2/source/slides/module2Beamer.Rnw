@@ -139,6 +139,20 @@ sample(p, replace=TRUE)
 \end{frame}
 
 
+
+\begin{frame}[fragile]{Generating data from a model}
+\begin{block}{xxx}
+
+$Y_i = \beta_0 + \beta_1 X_i + \epsilon_i$
+
+Assume X is categorical (how can we simulate it?).
+
+
+
+\end{block}
+\end{frame}
+
+
 %%%%%%%% IMPORTANT -- MUST HAVE [fragile] for some/all frames chunks to have output work correctly. 
 
 \begin{frame}[fragile]{Second Test}
