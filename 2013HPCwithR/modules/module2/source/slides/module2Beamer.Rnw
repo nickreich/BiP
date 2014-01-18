@@ -147,7 +147,12 @@ $Y_i = \beta_0 + \beta_1 X_i + \epsilon_i$
 
 Assume X is categorical (how can we simulate it?).
 
+\begin{itemize}
 
+\item generate new $Y_i$ from model without $\beta_1$. Either de novo or or from a bootstrap/permutation?
+\item fit model with $\beta_1$
+\item answer questions: how often do CIs for $\beta_1$ not cover zero (or p-val$<$.05)? fit model to real data and compare $\hat\beta_1$ to simulated $\hat\beta_1$s?
+\end{itemize}
 
 \end{block}
 \end{frame}

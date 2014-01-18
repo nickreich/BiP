@@ -1,9 +1,9 @@
 .Rproj.user
 .Rhistory
 .RData
-.DS_Store
-.synctex.gz
-.toc
-.nav
-.log
-.snm
+*.DS_Store
+*.synctex.gz
+*.toc
+*.nav
+*.log
+*.snm
