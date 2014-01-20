@@ -7,3 +7,5 @@
 *.nav
 *.log
 *.snm
+*.vrb
+modules/module2/source/slides/module2Beamer.tex

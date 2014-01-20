@@ -15,7 +15,7 @@
 %		(Currently unused, may be used in future.)
 \newcommand{\ModuleShortname}{simPar}
 %	Global variable containing author name:
-\author{Nicholas G Reich}
+\author{Nicholas G Reich, Andrea Foulkes, Gregory Matthews}
 %	Global variable containing text of license terms:
 \newcommand{\LicenseText}{Made available under the Creative Commons Attribution-ShareAlike 3.0 Unported License: http://creativecommons.org/licenses/by-sa/3.0/deed.en\textunderscore US }
 %	Instructor: optional, can leave blank.
@@ -109,12 +109,19 @@ opts_chunk$set(fig.path='figure/beamer-',fig.align='center',fig.show='hold',size
 
 \begin{block}{{\tt rnorm()}, {\tt rpois()}, etc...}
 
-Built-in functions for simulating data from known parametric distributions.
+Built-in functions for simulating from parametric distributions.
 
-<<paramSim, out.width='.45\\linewidth'>>=
+<<paramSim>>=
 x <- rnorm(100, mean=10, sd=5)
 (p <- rpois(5, lambda=25))
 @
+
+<<plotDists, out.width='\\linewidth', echo=FALSE, fig.height=3>>=
+par(mfrow=c(1,2))
+curve(dnorm(x, mean=10, sd=5), -5, 25, ylab="f(x)", las=1, bty="n", main="dnorm(x, mean=10, sd=5)")
+plot(dpois(0:50, lambda=25), type="h", ylab="", las=1, xlab="x", bty="n", main="dpois(x, lambda=25)")
+@
+
 
 \end{block}
 
@@ -141,11 +148,49 @@ sample(p, replace=TRUE)
 
 
 \begin{frame}[fragile]{Generating data from a model}
-\begin{block}{xxx}
 
-$Y_i = \beta_0 + \beta_1 X_i + \epsilon_i$
+\begin{block}{A Simple Linear Regression model}
 
-Assume X is categorical (how can we simulate it?).
+\begin{equation*}
+Y_i  =  \beta_0 + \beta_1 X_i + \epsilon_i
+\end{equation*}
+
+What is needed to simulate data (i.e. $Y_i$) from this model?
+\begin{itemize}
+\item The $X_i$: fixed quantities.
+\item Error distribution: e.g. $\epsilon_i  \stackrel{iid}{\sim}  N(0, \sigma^2)$.
+\item Values for parameters: $\beta_0$, $\beta_1$, $\sigma^2$.
+\end{itemize}
+
+
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]{Generating data from $Y_i  =  \beta_0 + \beta_1 X_i + \epsilon_i$}
+
+<<simData, tidy=FALSE, fig.height=3.5>>=
+require(ggplot2)
+n <- 100; b0=4; b1=2; s=2     ## define parameters
+x <- runif(n, -10, 10)        ## fix the X's
+eps <- rnorm(n, sd=s)         ## simulate the e_i's
+y <- b0 + b1*x + eps          ## compute the y_i's
+qplot(x, y, geom=c("point", "smooth"), method="lm", se=FALSE)
+@
+
+\end{frame}
+
+
+\begin{frame}{More data generation}
+
+\begin{block}{Assume X is a binary variable. How can we simulate it?}
+
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}{}
 
 \begin{itemize}
 
@@ -154,7 +199,6 @@ Assume X is categorical (how can we simulate it?).
 \item answer questions: how often do CIs for $\beta_1$ not cover zero (or p-val$<$.05)? fit model to real data and compare $\hat\beta_1$ to simulated $\hat\beta_1$s?
 \end{itemize}
 
-\end{block}
 \end{frame}
 
 
