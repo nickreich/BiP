@@ -1,4 +1,5 @@
 .Rproj.user
+.Rproj
 .Rhistory
 .RData
 *.DS_Store
@@ -8,4 +9,5 @@
 *.log
 *.snm
 *.vrb
-modules/module2/source/slides/module2Beamer.tex
+*-concordance.tex
+2013HPCwithR/modules/module2/source/slides/module2Beamer.tex
