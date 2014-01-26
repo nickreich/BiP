@@ -41,9 +41,15 @@
 %		the top of any TeX file using the statsTeachR standard
 %		beamer preamble. 
 
-\begin{frame}{Overview}
+\begin{frame}{Cluster computing with R}
 \begin{itemize}
-\item stuff
+\item First we need to VPN into the UMass network since we are off campus.  
+\item If you are on campus you don't need to do this.  
+\item Server address: vpn2.oit.umass.edu
+\item Group name: umass
+\item Password: vpn4umass
+\item Account name: bip2014
+\item Password: bi0Stats
 \end{itemize}
 \end{frame}
 
@@ -51,17 +57,14 @@
 \begin{frame}{Accessing the MGHPCC}
 \begin{itemize}
 \item Register for the MGHPCC (for UMass): https://www.umassrc.org/hpc/
-\item You need: a login and a password
-\item Logging in: ssh username@ghpcc06.umassrc.org
+\item You need: a login and a password for the MGHPCC. This is different than your UMass username.
 \end{itemize}
 \end{frame}
 
 
 \begin{frame}{Accessing the MGHPCC}
 \begin{itemize}
-\item Register for the MGHPCC (for UMass): https://www.umassrc.org/hpc/
-\item You need: a login and a password
-\item Logging in: ssh username@ghpcc06.umassrc.org
+\item \item Logging in: ssh username@ghpcc06.umassrc.org
 \item NOTE: You can only access the MGHPCC if you are on UMass's network (physically on campus or VPN)
 \end{itemize}
 \end{frame}
@@ -69,12 +72,35 @@
 
 \begin{frame}{Software}
 \begin{itemize}
-\item Once logged in, you will be placed in your home directory
-\item In order to use software, you'll need to load modules.  
+\item Once logged in, you will be placed in your home directory (/home/username)
+\item In order to use software on the server, you'll need to load modules that contain the software.  
+\item We are interested in using R here.  
+\item There are a wide array of available software options.  
 \item List of available software: http://wiki.umassrc.org/wiki/index.php/Provided\_Software
 \item We are interested in using R here.  
-\item So we need "module load R/3.0.1"
-\item We can also unload a module.  "module unload R"
+\item To load R we use the command: "module load R/3.0.1"
+\item We can also unload R with the command:  "module unload R"
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Software}
+\begin{itemize}
+\item This will allow us to run R interactively on the MGHPCC servers.  
+\item library(parallel) function detectCores()
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Batch Mode}
+\begin{itemize}
+\item Rather than running R code interactively, we can also run R in BATCH mode.  
+\item At the prompt, we submit a job by typing: R CMD BATCH filename.R
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Submitting jobs to the cluster}
+\begin{itemize}
+\item From wiki: {\bf Note}: Commands submitted to LSF are just like if they were run from a command prompt. 
+\item 
 \end{itemize}
 \end{frame}
 
@@ -93,12 +119,6 @@
 
 
 
-\begin{frame}{Batch Mode}
-\begin{itemize}
-\item Rather than running R code interactively, we can also run R in BATCH mode.  
-\item At the prompt, we submit a job by typing: R CMD BATCH filename.R
-\end{itemize}
-\end{frame}
 
 
 
