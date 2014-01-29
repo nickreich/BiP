@@ -263,9 +263,17 @@ summary(mod2)$coefficients
 
 \begin{frame}[fragile]{Permutation tests require repeated samples!}
 
-<<>>=
-@
-
+\begin{block}{A permutation test algorithm}
+\begin{itemize}
+        \item Run original analysis (i.e. fit our linear model), store $\hat\beta_1$.
+        \item For $i$ in $1, 2,  \dots, N$:
+        \begin{itemize}
+                \item Permute the $Y$s.
+                \item Re-run original analysis, store $\hat\beta_1^{(i)}$.
+        \end{itemize}
+        \item Calculate fraction of the $\hat\beta_1^{(i)}$ as or more extreme than $\hat\beta_1$
+\end{itemize}
+\end{block}
 
 \end{frame}
 
