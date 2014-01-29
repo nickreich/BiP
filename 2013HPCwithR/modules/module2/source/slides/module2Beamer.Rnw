@@ -112,7 +112,7 @@ opts_chunk$set(fig.path='figure/beamer-',fig.align='center',fig.show='hold',size
 Built-in functions for simulating from parametric distributions.
 
 <<paramSim>>=
-x <- rnorm(100, mean=10, sd=5)
+y <- rnorm(100, mean=10, sd=5)
 (p <- rpois(5, lambda=25))
 @
 
@@ -180,14 +180,96 @@ qplot(x, y, geom=c("point", "smooth"), method="lm", se=FALSE)
 
 \end{frame}
 
+\begin{frame}[fragile]{Example data: heights of mothers and daughters}
+ Heights of $n=1375$ mothers in the UK under the age of 65 and one of their adult daughters over the age of 18 (collected and organized during the period 1893--1898 by the famous statistician Karl Pearson)
+ 
+ 
+<<showHeights, message=FALSE>>=
+require(alr3)
+data(heights)
+head(heights)
+@
 
-\begin{frame}{More data generation}
+\end{frame}
 
-\begin{block}{Assume X is a binary variable. How could we simulate it?}
+\begin{frame}[fragile]{Example data: heights of mothers and daughters}
+ 
+<<plotHeights, message=FALSE, fig.height=4, tidy=FALSE>>=
+qplot(Mheight, Dheight, data=heights, col="red", alpha=.5) + 
+        theme(legend.position="none")
+@
 
+\end{frame}
+
+
+
+\begin{frame}[fragile]{One way to draw inference about height association}
+
+\begin{block}{Using normal approximations and simple linear regression}
+
+\begin{equation*}
+Dheight_i  =  \beta_0 + \beta_1 \cdot Mheight_i + \epsilon_i
+\end{equation*}
+
+<<heightLM>>=
+mod1 <- lm(Dheight ~ Mheight, data=heights)
+summary(mod1)$coefficients
+@
 \end{block}
 
 \end{frame}
+
+
+
+
+\begin{frame}[fragile]{Another way to draw inference about height association}
+
+\begin{block}{Using a simulation-based permutation test}
+
+\begin{itemize}
+        \item This can evaluate evidence for/against a null hypothesis.
+        \item We are interested in $H_0: \beta_1=0$ i.e. there is no relationship between heights of mother and daughter.
+        \item The trick: we can easily simulate multiple sets of data that we know have no association!
+        \item All we need is {\tt sample()}.
+\end{itemize}
+
+<<heightSingleResamp>>=
+resampDheight <- sample(heights$Dheight, replace=FALSE)
+@
+\end{block}
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Single permutation results}
+
+We can then fit this model
+\begin{equation*}
+Dheight_i  =  \beta_0 + \beta_1 \cdot Mheight_i + \epsilon_i
+\end{equation*}
+to data from this model
+\begin{equation*}
+Dheight_i  =  \beta_0 + \epsilon_i
+\end{equation*}
+<<resampHeightLM>>=
+mod2 <- lm(resampDheight ~ Mheight, data=heights)
+summary(mod2)$coefficients
+@
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Permutation tests require repeated samples!}
+
+<<>>=
+@
+
+
+\end{frame}
+
+
 
 
 \begin{frame}{}
