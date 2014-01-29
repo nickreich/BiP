@@ -183,7 +183,7 @@ qplot(x, y, geom=c("point", "smooth"), method="lm", se=FALSE)
 
 \begin{frame}{More data generation}
 
-\begin{block}{Assume X is a binary variable. How can we simulate it?}
+\begin{block}{Assume X is a binary variable. How could we simulate it?}
 
 \end{block}
 
