@@ -48,6 +48,118 @@
 
 \end{frame}
 
+\section{What is R?}
+\begin{frame}
+What is R?
+\begin{itemize}
+\item R is a language and environment for statistical computing and graphics. 
+\item Website: www.r-project.org
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%
+\begin{frame}
+Pros
+\begin{itemize}
+\item R is free.
+\item There are many packages for R.  Chances are someone has written it already. 
+\item Many cutting edge techniques are available very quickly.  
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%
+
+\begin{frame}
+Cons
+\begin{itemize}
+\item R is free.  This means there is no support for R.  
+\item This also means that you use a package at your own risk and you trust the author wrote the code correctly.  
+\item Takes a little while to learn.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%
+%\begin{frame}
+%\includegraphics[scale=.54]{twitterMap.pdf}
+%\end{frame}
+\section{R Studio}
+\begin{frame}
+\frametitle{R Studio}
+What is Rstudio$^{TM}$?
+\begin{itemize}
+\item RStudio? is a free and open source integrated development environment (IDE) for R.
+\item rstudio.org
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Rstudio}
+\begin{itemize}
+\item When you open up Rstudio the screen is divided into 4 parts
+\begin{itemize}
+\item Source (Upper Left)
+\item Console (Lower Left)
+\item Workspace/History (Upper Right)
+\item Files/Plots/Packages/{\bf Help}
+\end{itemize}
+\item 'Help' is your best friend. Every function in R has a help file.  
+\item You can either search for a function (lm) or type: help(lm).  Both take you to the same place.  (lower right of R studio)
+\item ls() lists all the current object (Upper right of R studio)
+\end{itemize}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Source}
+Upper Left box
+\begin{itemize}
+\item This is where we will type R code.  
+\item To run R code click the "Run" button or type "Command-Enter"
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Console}
+Lower Left box
+\begin{itemize}
+\item This displays the code that has run and the output.  
+\item We can either run code from the source box or by typing directly into the console
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Workspace/History}
+Upper Right box
+\begin{itemize}
+\item The workspace tab displays all of the R objects that have been created in this session and describes them 
+\item we can view the data in the source window by clicking to the right of the appropriate row in the workspace window
+\item we can also view the data in the console by typing the name of the object that we are interested in viewing and hitting enter.  
+\item the history tab displays all of the commands that have been run in the console
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Files/Plots/Packages/Help}
+Lower Right box
+\begin{itemize}
+\item Files: Allows you to look for files.  This is like Windows Explorer (or Finder, for Mac Users)
+\item Plots: Manages all of your plots that are created.
+\item Packages: Functions come in packages and you need to install and load the correct package to use a function.  This tab allows you to manage which packages are loaded.  
+\item {\bf Help}:  If you don't understand how to use a function, this allows you to get help (Can also get here by typing "help(lm)" which will give you the help file for the function "lm" used for linear modeling).
+\end{itemize}
+\end{frame}
+
+
 \section{Tools for reproducible research}
 \begin{frame}{Dyanamic R Reports}
 \begin{itemize}
