@@ -13,6 +13,9 @@ setwd("/Users/nick/Documents/code_versioned/BiP/2013HPCwithR/modules/module2/lab
 #setwd("/home/ngr67a/BiP/")
 hts <- read.csv("heights.csv")
 
+## if output file exists already, remove it
+file.remove("coefsDistr.csv")
+
 ## run permutation loop, storing each time
 mat <- foreach(i=1:nSim, .combine=rbind) %dopar% {
         permDhts <- sample(hts$Dheight, replace=FALSE)
