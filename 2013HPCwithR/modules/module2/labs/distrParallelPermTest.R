@@ -17,6 +17,7 @@ hts <- read.csv("heights.csv")
 file.remove("coefsDistr.csv")
 
 ## run permutation loop, storing each time
+tic <- Sys.time()
 mat <- foreach(i=1:nSim, .combine=rbind) %dopar% {
         permDhts <- sample(hts$Dheight, replace=FALSE)
         mdl <- lm(permDhts ~ hts$Mheight)
@@ -25,6 +26,8 @@ mat <- foreach(i=1:nSim, .combine=rbind) %dopar% {
         cat(c(lineText, "\n"), file="coefsDistr.csv", append=TRUE)
         output
 }
+toc <- Sys.time()
+(toc-tic)
 colnames(mat) <- c("iter", "b0", "b1")
 
 ## notes that lines in coefDistr.csv are not in order
