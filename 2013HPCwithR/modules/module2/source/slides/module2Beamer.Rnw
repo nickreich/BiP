@@ -25,6 +25,7 @@
 %		Recommended format: {Course: Biostatistics 101}
 \newcommand{\Course}{}
 
+%%%%%%%% IMPORTANT -- MUST HAVE [fragile] for some/all frames chunks to have output work correctly. 
 
 
 \begin{document}
@@ -32,6 +33,8 @@
 <<setup, include=FALSE>>=
 library(knitr)
 opts_chunk$set(fig.path='figure/beamer-',fig.align='center',fig.show='hold',size='footnotesize')
+library(ggplot2)
+theme_set(theme_bw())
 @
 
 
@@ -100,8 +103,6 @@ opts_chunk$set(fig.path='figure/beamer-',fig.align='center',fig.show='hold',size
 
 \vskip2em
 
-\begin{block}{In the right setting, any of the above methods can be used in a data analysis.}
-\end{block}
 \end{frame}
 
 \begin{frame}[fragile]{Random number generation in R}
@@ -169,7 +170,7 @@ What is needed to simulate data (i.e. $Y_i$) from this model?
 
 \begin{frame}[fragile]{Generating data from $Y_i  =  \beta_0 + \beta_1 X_i + \epsilon_i$}
 
-<<simData, tidy=FALSE, fig.height=3.5>>=
+<<simData, tidy=FALSE, fig.height=3.5, message=FALSE>>=
 require(ggplot2)
 n <- 100; b0=4; b1=2; s=2     ## define parameters
 x <- runif(n, -10, 10)        ## fix the X's
@@ -205,7 +206,7 @@ qplot(Mheight, Dheight, data=heights, col="red", alpha=.5) +
 
 \begin{frame}[fragile]{One way to draw inference about height association}
 
-\begin{block}{Using normal approximations and simple linear regression}
+\begin{block}{Using normality assumptions and simple linear regression}
 
 \begin{equation*}
 Dheight_i  =  \beta_0 + \beta_1 \cdot Mheight_i + \epsilon_i
@@ -228,7 +229,7 @@ summary(mod1)$coefficients
 
 \begin{itemize}
         \item This can evaluate evidence for/against a null hypothesis.
-        \item We are interested in $H_0: \beta_1=0$ i.e. there is no relationship between heights of mother and daughter.
+        \item We are interested in $H_0: \beta_1=0$, i.e. there is no relationship between heights of mother and daughter.
         \item The trick: we can easily simulate multiple sets of data that we know have no association!
         \item All we need is {\tt sample()}.
 \end{itemize}
@@ -246,11 +247,13 @@ resampDheight <- sample(heights$Dheight, replace=FALSE)
 
 We can then fit this model
 \begin{equation*}
-Dheight_i  =  \beta_0 + \beta_1 \cdot Mheight_i + \epsilon_i
+Dheight^*_i  =  \beta_0 + \beta_1 \cdot Mheight_i + \epsilon_i
 \end{equation*}
-to data from this model
+where $Dheight^*_i$ are the permuted daughter heights. 
+
+This is sort of like ``generating'' data from this model:
 \begin{equation*}
-Dheight_i  =  \beta_0 + \epsilon_i
+Dheight^*_i  =  \beta_0 + \epsilon_i
 \end{equation*}
 <<resampHeightLM>>=
 mod2 <- lm(resampDheight ~ Mheight, data=heights)
@@ -271,9 +274,19 @@ summary(mod2)$coefficients
                 \item Permute the $Y$s.
                 \item Re-run original analysis, store $\hat\beta_1^{(i)}$.
         \end{itemize}
-        \item Calculate fraction of the $\hat\beta_1^{(i)}$ as or more extreme than $\hat\beta_1$
+        \item Calculate fraction of the $\hat\beta_1^{(i)}$ as or more ``extreme'' than $\hat\beta_1$
 \end{itemize}
 \end{block}
+
+\end{frame}
+
+
+
+\begin{frame}{Hands-on exercise}
+
+\begin{itemize}
+\item We have provided code for you to adapt and run this analysis.
+\end{itemize}
 
 \end{frame}
 
@@ -290,24 +303,6 @@ summary(mod2)$coefficients
 \end{itemize}
 
 \end{frame}
-
-
-%%%%%%%% IMPORTANT -- MUST HAVE [fragile] for some/all frames chunks to have output work correctly. 
-
-\begin{frame}[fragile]{Second Test}
-
-Text is nice but let's see what happens if we make a couple of plots
-in our chunk:
-
-<<boring-plots,fig.width=4,fig.height=4,out.width='.45\\linewidth'>>=
-x <- rnorm(200)
-par(las=1,mar=c(4,4,.1,.1))  # tick labels direction
-boxplot(x) 
-hist(x,main='',col="blue",probability=TRUE) 
-lines(density(x),col="red")
-@
-\end{frame}
-
 
 
 
