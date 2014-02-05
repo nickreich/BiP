@@ -11,12 +11,12 @@
 
 %	The following variables are assumed by the standard preamble:
 %	Global variable containing module name:
-\title{Module Name}
+\title{Cluster Computing}
 %	Global variable containing module shortname:
 %		(Currently unused, may be used in future.)
 \newcommand{\ModuleShortname}{shortName}
 %	Global variable containing author name:
-\author{Gregory J. Matthews}
+\author{Nicholas G Reich, Andrea S Foulkes, and Gregory J Matthews}
 %	Global variable containing text of license terms:
 \newcommand{\LicenseText}{Made available under the Creative Commons Attribution-ShareAlike 3.0 Unported License: http://creativecommons.org/licenses/by-sa/3.0/deed.en\textunderscore US }
 %	Instructor: optional, can leave blank.
@@ -67,7 +67,7 @@
 
 \begin{frame}{VPN information}
 \begin{itemize}
-\item Server address: vpn2.oit.umass.edu (or vpn2.oit.umass.edu)
+\item Server address: vpn2.oit.umass.edu 
 \item Group name: umass
 \item Password: vpn4umass
 \item Account name: bip2014 (temporary for BIP2014)
@@ -109,7 +109,7 @@
 \item The command {\bf get} pulls a file from your the server to your local drive.
 \end{itemize}
 {\tt \$ put myData.csv /home/gjm43a/BIP2014}\\
-{\tt \$ get results.csv /Users/gregorymatthews/clusterResults}
+{\tt \$ get results.csv ~/clusterResults}
 \end{frame}
 
 \begin{frame}{Transferring Data to MGHPCC: scp}
@@ -123,6 +123,16 @@
 {\tt \$ scp myData.csv gjm43a@ghpcc06.umassrc.org:/home/gjm43a}\\
 {\tt \$ scp gjm43a@ghpcc06.umassrc.org:/home/gjm43a myData.csv}
 \end{frame}
+
+\begin{frame}{Transferring Data to MGHPCC: scp}
+\begin{itemize}
+\item With scp we can also transfer entire folders.
+\item To do so we use the -r option
+\end{itemize}
+{\tt \$ scp -r /Users/gregorymatthews/Dropbox/BiPSandbox/code gjm43a@ghpcc06.umassrc.org:/home/gjm43a}\\
+{\tt \$ scp -r gjm43a@ghpcc06.umassrc.org:/home/gjm43a/code /Users/gregorymatthews/Dropbox/BiPSandbox}
+\end{frame}
+
 
 
 \begin{frame}{Software}
@@ -218,6 +228,42 @@
 \end{itemize}
 {\tt \$ bsub -n 4 -R "rusage[mem=2048]" -W 0:10 -q long example.sh}
 \end{frame}
+
+\begin{frame}{Submiting jobs to the cluster: Local}
+\begin{itemize}
+\item An example shell script is below. 
+\item Here we submit to the parallel queue.
+\item Commands to submit is same as before: bsub < example.sh
+\end{itemize}
+{\tt \#!/bin/bash\\
+\#BSUB -R rusage[mem=2048] \# ask for memory\\
+\#BSUB -R span[hosts=1]    \# all the cores on one machine\\
+\#BSUB -W 0:10             \# not sure what this is doing\\
+\#BSUB -q short  \# which queue we want to run in\\
+
+module load R/3.0.1\\
+R CMD BATCH /home/gjm43a/BiP/localParallelPermTest.R}
+\end{frame}
+
+\begin{frame}{Submiting jobs to the cluster: Distributed}
+\begin{itemize}
+\item We can also specify options in the shell script that we submit to the LSF scheduler.  
+\item An example shell script is below. 
+\item Commands to submit: bsub < example.sh
+\end{itemize}
+{\tt \#!/bin/bash\\
+\#BSUB -n 100\\
+\#BSUB -R rusage[mem=2048] \# ask for memory\\
+\#BSUB -W 0:10\\
+\#BSUB -q {\bf parallel}  \# which queue we want to run in
+
+module load R/3.0.1\\
+R CMD BATCH /home/gjm43a/BiP/distrParallelPermTest.R /home/gjm43a/BiP/file1.Rout\\
+R CMD BATCH /home/gjm43a/BiP/distrParallelPermTest.R /home/gjm43a/BiP/file2.Rout\\
+R CMD BATCH /home/gjm43a/BiP/distrParallelPermTest.R /home/gjm43a/BiP/file3.Rout\\
+R CMD BATCH /home/gjm43a/BiP/distrParallelPermTest.R /home/gjm43a/BiP/file4.Rout}
+\end{frame}
+
 
 
 \end{document}
