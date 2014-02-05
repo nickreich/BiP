@@ -280,13 +280,66 @@ summary(mod2)$coefficients
 
 \end{frame}
 
+\begin{frame}{}
+
+\begin{block}{Shifting gears from statistics to computation...}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}{Parallel computation in R}
+
+\begin{block}{What is parallel computing?}
+\begin{itemize}
+        \item Wikipedia says: ``Parallel computing is a form of computation in which many calculations are carried out simultaneously, operating on the principle that large problems can often be divided into smaller ones, which are then solved concurrently ("in parallel").''
+        \item Not every computational problem is parallelizable!        
+        \item Today, we will focus on problems that are ``embarrassingly parallel'' in nature.
+        \item We will make a distinction between ``local'' and ''distributed'' parallel computing, but these are our loose terminology. 
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Local vs. distributed}
+
+\begin{block}{Local parallelization}
+\begin{itemize}
+\item Within a {\tt .R} script, call multiple cores (on your laptop, on a cluster node, etc...).
+\item Two simple implementations: 
+\begin{itemize}
+        \item {\tt foreach()} requiring {\tt doMC} and {\tt foreach} packages
+        \item {\tt mclapply()} requiring {\tt parallel} package
+\end{itemize}
+\end{itemize}
+\end{block}
+
+\begin{block}{Distributed parallelization}
+\begin{itemize}
+\item Within a {\tt .sh} script, call multiple {\tt .R} files/jobs/scripts to run on separate nodes simultaneously. 
+\item Each individual job could have local parallelization as well.
+\end{itemize}
+\end{block}
+
+\end{frame}
+
 
 
 \begin{frame}{Hands-on exercise}
 
 \begin{itemize}
-\item We have provided code for you to adapt and run this analysis.
+\item We have provided code for you to adapt and run a permutation test in parallel.
 \end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}{}
 
 \end{frame}
 
