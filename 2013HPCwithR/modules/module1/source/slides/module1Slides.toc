@@ -1,2 +1,0 @@
-\beamer@endinputifotherversion {3.10pt}
-\beamer@sectionintoc {1}{Tools for reproducible research}{3}{0}{1}
