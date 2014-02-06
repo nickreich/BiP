@@ -158,7 +158,33 @@ Foundational training in reproducible research includes rigorous instruction in:
 
 \end{frame}
 
+\begin{frame}{Version control systems}
 
+\begin{block}{Common VCS}
+\begin{itemize}
+\item git
+\item subversion (svn)
+\item mercurial
+\item ...
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}{Version control and reproducibility}
+
+
+\begin{block}{Why version control?}
+
+\begin{itemize}
+        \item allows you to roll back to previous versions easily
+        \item allows you to try things out without disrupting existing code
+        \item versions can be flagged as ``releases''  
+\end{itemize}
+\end{block}
+
+\end{frame}
 
 \begin{frame}{Version control systems}
 
@@ -176,27 +202,32 @@ Foundational training in reproducible research includes rigorous instruction in:
 
 \end{frame}
 
+\begin{frame}{Version control systems}
+
+\begin{figure}[t]
+    \includegraphics[width=\textwidth]{figures/VCS/VCS003.jpg}  
+\end{figure}
+
+\end{frame}
 
 \begin{frame}{Version control systems}
 
-\begin{block}{Common VCS}
-\begin{itemize}
-\item git
-\item subversion (svn)
-\item mercurial
-\item ...
-\end{itemize}
-\end{block}
+\begin{figure}[t]
+    \includegraphics[width=\textwidth]{figures/VCS/VCS004.jpg}  
+\end{figure}
 
 \end{frame}
 
 
-\begin{frame}{git}
+
+
+\begin{frame}{git is a dialect}
 
 \begin{block}{Key command-line operations}
 \begin{itemize}
 \item {\tt git init}: initializes a repository locally
 \item {\tt git clone}: clones a repository from a remote source (i.e. GitHub.com)
+\item {\tt git branch}: creates a new ``branch'' of code
 \item {\tt git add}, {\tt git rm}: manipulating files 
 \item {\tt git commit}: commits changes you have made
 \end{itemize}
@@ -205,9 +236,15 @@ Foundational training in reproducible research includes rigorous instruction in:
 \end{frame}
 
 
-\begin{frame}{Version control and reproducibility}
+\begin{frame}{Using git with RStudio}
+
+Demo...
 
 \end{frame}
+
+
+
+
 
 %Opening R - some basics (getwd setwd)
 %Data Management
