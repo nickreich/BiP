@@ -350,10 +350,28 @@ summary(mod2)$coefficients
 
 
 
+\begin{frame}[fragile]{How many cores do you have?}
+
+\begin{itemize}
+\item Simple way to check: 
+<<detectCores, message=FALSE>>=
+require(parallel)
+detectCores()
+@
+\item Caveat 1: \# of cores may be less than the \# of simultaneous computational threads you could run.
+\item Caveat 2: You may not want to eat up all your local CPU with a computational job.
+\end{itemize}
+
+\end{frame}
+
+
+
+
 \begin{frame}{Hands-on exercise}
 
 \begin{itemize}
-\item We have provided code for you to adapt and run a permutation test in parallel.
+\item We have provided code for you to adapt and run a permutation test in parallel: {\tt BiPSandbox/code/permTest\_foreach.R}
+\item Let's try to learn about different parallel computing speeds through an old-school distributed computing experiment: see {\tt BiPSandbox/code/localParallelData.csv}
 \end{itemize}
 
 \end{frame}

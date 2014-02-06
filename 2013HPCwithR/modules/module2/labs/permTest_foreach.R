@@ -13,8 +13,8 @@ registerDoMC(nCores)
 #### YOU WILL NEED TO CHANGE THIS WORKING DIRECTORY ####
 
 #### Choose the directory where your heights.csv dataset is stored
-#setwd("/Users/nick/Documents/code_versioned/BiP/2013HPCwithR/modules/module2/labs/")
-setwd("/home/ngr67a/BiP/")
+setwd("/Users/nick/Documents/code_versioned/BiP/2013HPCwithR/modules/module2/labs/")
+#setwd("/home/ngr67a/BiP/")
 hts <- read.csv("heights.csv")
 
 ## fit initial model and create storage file
