@@ -202,6 +202,51 @@ FWER=Pr(\text{reject at least one }H_0^k \; | \text{all } H_0^k \text{ are true}
 \end{enumerate} 
 \end{frame}
 
+\begin{frame}[fragile]
+In this lab we will use the Cardiogram summary level data.  To begin, read in these data and look at the first 10 rows:
+<<printSNPs>>=
+setwd("~/BiP/2013HPCwithR/modules/module4/source/labs/")
+cardioDat <- read.csv("cardioPvalues.csv")
+print(cardioDat[1:10,])
+  @
+\end{frame}
 
+\begin{frame}[fragile]
+{\sc Excersie 1:} Conduct a simulation study to identify an appropriate p-value threshold for statistical significance (assuming independence of SNPs):
+\begin{itemize}
+  \item generate $965,220$ p-values from a uniform distribution
+  \item determine value corresponding to the $5$th percentile
+	\item repeat $500$ times and record $5$th percentile of this distn.
+	\end{itemize}
+  
+  <<simP>>=
+sim1 <- runif(nrow(cardioDat))  
+@
+\end{frame}
+
+\begin{frame}[fragile]
+<<simPparallel>>==
+## locally parallelized permutation test
+## BiP HPC workshop 2014
+
+require(doMC)
+require(foreach)
+nSim <- 100 ## number of permutations
+nCores <- 10
+
+registerDoMC(nCores)
+
+#setwd("/Users/nick/Documents/code_versioned/BiP/2013HPCwithR/modules/module2/labs/")
+#setwd("/home/ngr67a/BiP/")
+
+## run permutation loop, storing each time
+matNullP <- foreach(i=1:nSim, .combine=rbind) %dopar% {
+        sim <- runif(nrow(cardioDat)) 
+        c(i, sort(sim)[nrow(cardioDat)*0.05])
+}
+
+write.csv(mat, file="coefs.csv", row.names=FALSE)
+@
+\end{frame}
 
 \end{document}
