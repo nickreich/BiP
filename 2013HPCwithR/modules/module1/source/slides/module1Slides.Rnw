@@ -40,7 +40,7 @@
 %		beamer preamble. 
 
 
-\begin{frame}{Welcome}
+\begin{frame}{}
 \huge {\sc Biostatistics in Practice (BiP) 2014}: \\
 
 \normalsize 
@@ -111,7 +111,7 @@ Teaching Assistants:
 \item Steven Calderbank
 \item Eric Cohen
 \item Stephen Lauer
-\item Sara Nunez
+\item Sara Nu\~nez
 \item Emily Ramos
 \item Eric Reed
 \end{itemize}
@@ -211,7 +211,6 @@ Foundational training in reproducible research includes rigorous instruction in:
 
 %Opening R - some basics (getwd setwd)
 %Data Management
-\section{What is R?}
 \begin{frame}
 What is R?
 \begin{itemize}
@@ -248,7 +247,6 @@ Cons
 %\begin{frame}
 %\includegraphics[scale=.54]{twitterMap.pdf}
 %\end{frame}
-\section{R Studio}
 \begin{frame}
 \frametitle{R Studio}
 What is Rstudio$^{TM}$?
