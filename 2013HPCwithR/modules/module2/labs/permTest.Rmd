@@ -1,0 +1,49 @@
+A permutation test for the Mother/Daughter heights data
+========================================================
+### Biostatistics in Practice HPC workshop, February 2014
+
+This file documents an analysis to evaluate the significance of the association between mother and daughter heights. We will analyze the "heights" dataset from the `R` package `alr3`. 
+
+```{r loadData, message=FALSE}
+require(alr3)
+data(heights)
+```
+The heights dataset contains `r nrow(heights)` observations of heights of a mother and her daughter. This dataset was compiled by the statistician Karl Pearson in the late 1800s. We will start by describing the data visually with a simple graphic.
+
+```{r describeData, message=FALSE, fig.height=4, fig.width=5}
+require(ggplot2)
+theme_set(theme_bw()) ## sets default white background theme for ggplot
+qplot(Mheight, Dheight, data=heights, col="red", alpha=.5) + theme(legend.position="none")
+```
+
+#### Running the permutation test
+We are interested in fitting the model
+$$ Dheight_i \sim \beta_0 + \beta_1 \cdot Mheight_i + \epsilon_i $$
+and in drawing inference about the $\beta_1$ parameter. Specifically, we are going to run a permutation test to evaluate evidence for or against the null hypothesis $H_0: \beta_1=0$.
+
+The following code runs the permutation test.
+```{r runSim, cache=TRUE}
+nSim <- 10 ## number of permutations
+
+## fit initial model and create storage file
+realDataModel <- lm(Dheight ~ Mheight, data=heights)
+
+## create storage matrix
+mat <- matrix(NA, nrow=nSim, ncol=2)
+colnames(mat) <- c("b0", "b1")
+
+## run permutation loop, storing each time
+for(i in 1:nSim) {
+        permDhts <- sample(heights$Dheight, replace=FALSE)
+        mdl <- lm(permDhts ~ heights$Mheight)
+        mat[i,] <- coef(mdl)
+}
+```
+
+Now that we have our distribution of $\beta_1$ under the null hypothesis, we can compare the estimate of $\beta_1$ from the real data analysis.
+```{r compareBeta, message=FALSE}
+qplot(mat[,"b1"])
+```
+
+
+

@@ -15,7 +15,7 @@
 %		(Currently unused, may be used in future.)
 \newcommand{\ModuleShortname}{simPar}
 %	Global variable containing author name:
-\author{Nicholas G Reich, Andrea Foulkes, Gregory Matthews}
+\author{Nicholas G Reich, Andrea S Foulkes, Gregory J Matthews}
 %	Global variable containing text of license terms:
 \newcommand{\LicenseText}{Made available under the Creative Commons Attribution-ShareAlike 3.0 Unported License: http://creativecommons.org/licenses/by-sa/3.0/deed.en\textunderscore US }
 %	Instructor: optional, can leave blank.
@@ -29,7 +29,6 @@
 
 
 \begin{document}
-\SweaveOpts{concordance=TRUE}
 
 <<setup, include=FALSE>>=
 library(knitr)
@@ -88,15 +87,14 @@ theme_set(theme_bw())
 \end{frame}
 
 
-
-\begin{frame}{What simulations have you run?}
+\begin{frame}{Simple examples of simulations}
 
 
         \begin{itemize}
 
                 \item Drawing pseudo-random numbers from a probability distribution (e.g. proposal distributions, ...).
                 
-                \item Generating data from a specified model (e.g. building a template dataset, calculating statistical power).
+                \item Generating data from a specified model (e.g. building a template dataset to test a method, calculating statistical power).
                 
                 \item Resampling existing data (e.g. permutation, bootstrap).
 
@@ -105,6 +103,17 @@ theme_set(theme_bw())
 \vskip2em
 
 \end{frame}
+
+
+
+
+\begin{frame}{What simulations have you run?}
+
+
+\end{frame}
+
+
+
 
 \begin{frame}[fragile]{Random number generation in R}
 
@@ -173,10 +182,10 @@ What is needed to simulate data (i.e. $Y_i$) from this model?
 
 <<simData, tidy=FALSE, fig.height=3.5, message=FALSE>>=
 require(ggplot2)
-n <- 100; b0=4; b1=2; s=2     ## define parameters
-x <- runif(n, -10, 10)        ## fix the X's
-eps <- rnorm(n, sd=s)         ## simulate the e_i's
-y <- b0 + b1*x + eps          ## compute the y_i's
+n <- 100; b0=4; b1=2; sigma=2     ## define parameters
+x <- runif(n, -10, 10)            ## fix the X's
+eps <- rnorm(n, sd=sigma)         ## simulate the e_i's
+y <- b0 + b1*x + eps              ## compute the y_i's
 qplot(x, y, geom=c("point", "smooth"), method="lm", se=FALSE)
 @
 
@@ -252,9 +261,9 @@ Dheight^*_i  =  \beta_0 + \beta_1 \cdot Mheight_i + \epsilon_i
 \end{equation*}
 where $Dheight^*_i$ are the permuted daughter heights. 
 
-This is sort of like ``generating'' data from this model:
+This essentially ``generates'' data from the null model:
 \begin{equation*}
-Dheight^*_i  =  \beta_0 + \epsilon_i
+Dheight^*_i  =  \beta_0 + 0 \cdot Mheight_i +\epsilon_i
 \end{equation*}
 <<resampHeightLM>>=
 mod2 <- lm(resampDheight ~ Mheight, data=heights)
@@ -280,6 +289,17 @@ summary(mod2)$coefficients
 \end{block}
 
 \end{frame}
+
+
+
+\begin{frame}{Hands-on exercise}
+
+\begin{itemize}
+\item We have provided code for you to adapt and run a permutation test.
+\end{itemize}
+
+\end{frame}
+
 
 \begin{frame}{}
 
