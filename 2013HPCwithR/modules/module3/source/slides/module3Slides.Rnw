@@ -63,13 +63,18 @@
 
 \begin{frame}{VPN information}
 \begin{itemize}
+\item Mac: System Preferences > Network > VPN on left 
+\item Windows: Cisco VPN client
+\begin{itemize}
 \item Server address: vpn2.oit.umass.edu 
 \item Group name: umass
 \item Password: vpn4umass
-\item Account name: UMass user ID OR bip&i (temporary for BIP2014)
+\item Account name: UMass user ID OR bip(number) (temporary for BIP2014)
 \item Password: Enter your password
 \end{itemize}
+\end{itemize}
 \end{frame}
+
 
 \begin{frame}{Accessing the MGHPCC}
 \begin{itemize}
@@ -82,52 +87,33 @@
 
 \begin{frame}{Accessing the MGHPCC}
 \begin{itemize}
-\item Create a secure shell: ssh username@ghpcc06.umassrc.org
+\item Unix or Mac
+\begin{itemize}
+\item Unix or Mac: Create a secure shell: ssh username@ghpcc06.umassrc.org
+\end{itemize}
+\item Windows
+\begin{itemize}
+\item PuTTy: ghpcc06.umassrc.org (you will be prompted for user name and password)
+\end{itemize}
 \item Enter password when prompted.  
 \item You are now connected to the cluster!
 \item Remember: You can only access the MGHPCC if you are on UMass's network (physically on campus or VPN)
 \end{itemize}
 \end{frame}
 
+
+
+
+
+
 \begin{frame}{Transferring Data to MGHPCC}
 \begin{itemize}
-\item Easy ways to do this are with: scp or sftp
-\item You can also use rsync, but this is a bit more complicated.
+\item We recommend using Cyberduck, a graphical SFTP client. 
+\item Other options include scp and sftp for Mac/Unix command line users or PSCP/PSFTP for Windows users.  
+\item Let's try to move the BiPSandbox folder to your /home/username folder on the MGHPCC.  
 \end{itemize}
 \end{frame}
 
-
-\begin{frame}{Transferring Data to MGHPCC: sftp}
-\begin{itemize}
-\item Connect to the MGHPCC using: sftp username@ghpcc06.umassrc.org and enter your password.  
-\item You can transfer files to the server from your local computer and vice versa.  
-\item The command {\bf put} pulls a file from your local drive to the server.
-\item The command {\bf get} pulls a file from your the server to your local drive.
-\end{itemize}
-{\tt \$ put myData.csv /home/gjm43a/BIP2014}\\
-{\tt \$ get results.csv ~/clusterResults}
-\end{frame}
-
-\begin{frame}{Transferring Data to MGHPCC: scp}
-\begin{itemize}
-\item We can also use the scp command.
-\item This will transfer our files from our local machine to the server and vice versa. 
-\item Usage is scp [source] [destination]
-\item Running this command will prompt you for your password and then the file will be transferred.  
-\item scp is better than sftp for transferring directories.  
-\end{itemize}
-{\tt \$ scp myData.csv gjm43a@ghpcc06.umassrc.org:/home/gjm43a}\\
-{\tt \$ scp gjm43a@ghpcc06.umassrc.org:/home/gjm43a myData.csv}
-\end{frame}
-
-\begin{frame}{Transferring Data to MGHPCC: scp}
-\begin{itemize}
-\item With scp we can also transfer entire folders.
-\item To do so we use the -r option
-\end{itemize}
-{\tt \$ scp -r /Users/gregorymatthews/Dropbox/BiPSandbox/code gjm43a@ghpcc06.umassrc.org:/home/gjm43a}\\
-{\tt \$ scp -r gjm43a@ghpcc06.umassrc.org:/home/gjm43a/code /Users/gregorymatthews/Dropbox/BiPSandbox}
-\end{frame}
 
 
 
@@ -158,7 +144,7 @@
 \begin{frame}{Batch Mode}
 \begin{itemize}
 \item Rather than running R code interactively, we can also run R in BATCH mode. 
-\itme This first requires you to write an R script that you want to run.  
+\item This first requires you to write an R script that you want to run.  
 \item Then at the command prompt, we submit the script by typing: R CMD BATCH [options] scriptName.R
 \item But we don't really want to do this either.  
 \item We want to submit batch jobs to the cluster.  
