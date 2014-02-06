@@ -17,16 +17,15 @@
 %	Global variable containing author name:
 \author{Nicholas G Reich, Andrea S Foulkes, Gregory J Matthews}
 %	Global variable containing text of license terms:
-\newcommand{\LicenseText}{Made available under the Creative Commons Attribution-ShareAlike 3.0 Unported License: http://creativecommons.org/licenses/by-sa/3.0/deed.en\textunderscore US }
+\newcommand{\LicenseText}{Made available under the Creative Commons Attribution-ShareAlike 3.0 Unported License: http://creativecommons.org/licenses/by-sa/3.0/deed.en\_US }
 %	Instructor: optional, can leave blank.
 %		Recommended format: {Instructor: Jane Doe}
 \newcommand{\Instructor}{}
 %	Course: optional, can leave blank.
 %		Recommended format: {Course: Biostatistics 101}
-\newcommand{\Course}{}
+\newcommand{\Course}{Biostatistics in Practice: Research Training in High-Performance Computing with R}
 
 %%%%%%%% IMPORTANT -- MUST HAVE [fragile] for some/all frames chunks to have output work correctly. 
-
 
 \begin{document}
 
@@ -50,11 +49,9 @@ theme_set(theme_bw())
 
 		\begin{itemize}
 
-			\item{Simulate data from a parametric distribution.}
+			\item{simulate data from a parametric distribution.}
 
-			\item{Formulate a statistical model and simulate data from it.}
-
-			\item{Design and implement a simulation experiment to test a hypothesis.}
+			\item{Design and implement a resampling simulation experiment to test a hypothesis.}
                         
                         \item{Run simulations in parallel, when appropriate.}
                         
@@ -296,7 +293,7 @@ summary(mod2)$coefficients
 
 \begin{itemize}
 \item We have provided code for you to adapt and run a permutation test.
-\item {\tt permTest.Rmd} in BiPSandbox repository.
+\item {\tt BiPSandbox/code/permTest.Rmd}.
 \end{itemize}
 
 \end{frame}
@@ -379,24 +376,26 @@ detectCores()
 
 
 
-\begin{frame}{}
+\begin{frame}{Recapping module learning goals}
+
+        \begin{block}{We have...}
+        	
+
+		\begin{itemize}
+
+\item{simulated data from a parametric distribution.}
+
+\item{used resampling theory and simulation techniques to conduct a permutation test.}
+
+\item{run a simulation in parallel, on our laptops.}
+
+\item{learned something about parallel computing along the way.}
+
+		\end{itemize}
+
+	\end{block}
 
 \end{frame}
-
-
-
-
-\begin{frame}{}
-
-\begin{itemize}
-
-\item generate new $Y_i$ from model without $\beta_1$. Either de novo or or from a bootstrap/permutation?
-\item fit model with $\beta_1$
-\item answer questions: how often do CIs for $\beta_1$ not cover zero (or p-val$<$.05)? fit model to real data and compare $\hat\beta_1$ to simulated $\hat\beta_1$s?
-\end{itemize}
-
-\end{frame}
-
 
 
 
