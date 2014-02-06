@@ -296,6 +296,7 @@ summary(mod2)$coefficients
 
 \begin{itemize}
 \item We have provided code for you to adapt and run a permutation test.
+\item {\tt permTest.Rmd} in BiPSandbox repository.
 \end{itemize}
 
 \end{frame}
