@@ -17,16 +17,15 @@
 %	Global variable containing author name:
 \author{Nicholas G Reich, Andrea S Foulkes, Gregory J Matthews}
 %	Global variable containing text of license terms:
-\newcommand{\LicenseText}{Made available under the Creative Commons Attribution-ShareAlike 3.0 Unported License: http://creativecommons.org/licenses/by-sa/3.0/deed.en\textunderscore US }
+\newcommand{\LicenseText}{Made available under the Creative Commons Attribution-ShareAlike 3.0 Unported License: http://creativecommons.org/licenses/by-sa/3.0/deed.en\_US }
 %	Instructor: optional, can leave blank.
 %		Recommended format: {Instructor: Jane Doe}
 \newcommand{\Instructor}{}
 %	Course: optional, can leave blank.
 %		Recommended format: {Course: Biostatistics 101}
-\newcommand{\Course}{}
+\newcommand{\Course}{Biostatistics in Practice: Research Training in High-Performance Computing with R}
 
 %%%%%%%% IMPORTANT -- MUST HAVE [fragile] for some/all frames chunks to have output work correctly. 
-
 
 \begin{document}
 

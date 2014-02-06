@@ -22,8 +22,6 @@
 %		Recommended format: {Course: Biostatistics 101}
 \newcommand{\Course}{Biostatistics in Practice: Research Training in High-Performance Computing with R}
 
-%% for strikethrough text
-\usepackage{ulem}
 
 
 %	******	Document body begins here	**********************
@@ -267,7 +265,7 @@ Foundational training in reproducible research includes rigorous instruction in:
 \begin{frame}{Tools for reproducible data analysis with R}
 
 \begin{itemize}
-        \item \sout{Version control: git \& GitHub.com}
+        \item Version control: git \& GitHub.com
         \item Dynamic documents: knitr, RMarkdown, Sweave
         \item RStudio
         \item {\tt ggplot2}
@@ -294,10 +292,10 @@ Today, we will be using very simple {\tt ggplot2} commands.
 \begin{frame}{Tools for reproducible data analysis with R}
 
 \begin{itemize}
-        \item \sout{Version control: git \& GitHub.com}
+        \item Version control: git \& GitHub.com
         \item Dynamic documents: knitr, RMarkdown, Sweave
         \item RStudio
-        \item \sout{{\tt ggplot2}}
+        \item {\tt ggplot2}
 \end{itemize}
 
 \end{frame}
