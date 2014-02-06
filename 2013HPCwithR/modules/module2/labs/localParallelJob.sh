@@ -5,4 +5,4 @@
 #BSUB -q short  # which queue we want to run in
 
 module load R/3.0.1
-R CMD BATCH /home/ngr67a/BiP/localParallelPermTest.R
+R CMD BATCH /home/ngr67a/BiP/permTest_foreach.R
