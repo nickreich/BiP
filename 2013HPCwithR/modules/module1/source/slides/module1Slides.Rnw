@@ -1,4 +1,4 @@
-
+        
 \documentclass[table]{beamer}
 
 
@@ -27,7 +27,6 @@
 %	******	Document body begins here	**********************
 
 \begin{document}
-\SweaveOpts{concordance=TRUE}
 
 %	Title page
 \begin{frame}[plain]
