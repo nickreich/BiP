@@ -22,6 +22,8 @@
 %		Recommended format: {Course: Biostatistics 101}
 \newcommand{\Course}{Biostatistics in Practice: Research Training in High-Performance Computing with R}
 
+%% for strikethrough text
+\usepackage{ulem}
 
 
 %	******	Document body begins here	**********************
@@ -194,7 +196,7 @@ Foundational training in reproducible research includes rigorous instruction in:
 
 \end{frame}
 
-\begin{frame}{Version control systems}
+\begin{frame}{Version control systems (git flavored)}
 
 \begin{figure}[t]
     \includegraphics[width=\textwidth]{figures/VCS/VCS002.jpg}  
@@ -210,7 +212,7 @@ Foundational training in reproducible research includes rigorous instruction in:
 
 \end{frame}
 
-\begin{frame}{Version control systems}
+\begin{frame}{Version control systems  (git/GitHub flavored)}
 
 \begin{figure}[t]
     \includegraphics[width=\textwidth]{figures/VCS/VCS004.jpg}  
@@ -218,6 +220,20 @@ Foundational training in reproducible research includes rigorous instruction in:
 
 \end{frame}
 
+
+\begin{frame}{Lots of (mostly free) options for cloud-based version controlling}
+
+\begin{block}{Most services host multiple types of VCS}
+\begin{itemize}
+\item sourceforge.net
+\item github.com
+\item bitbucket.org
+\item springloops.io
+\item ... [what have you used?]
+\end{itemize}
+\end{block}
+
+\end{frame}
 
 
 
@@ -238,10 +254,53 @@ Foundational training in reproducible research includes rigorous instruction in:
 
 \begin{frame}{Using git with RStudio}
 
-Demo...
+\begin{block}{Demo... }
+\begin{itemize}
+        \item clone the BiPSandbox repository from GitHub
+        \item simple commit/push/pull examples
+\end{itemize}
+\end{block}
 
 \end{frame}
 
+
+\begin{frame}{Tools for reproducible data analysis with R}
+
+\begin{itemize}
+        \item \sout{Version control: git \& GitHub.com}
+        \item Dynamic documents: knitr, RMarkdown, Sweave
+        \item RStudio
+        \item {\tt ggplot2}
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Arguments for using {\tt ggplot2}}
+
+\begin{block}{From {\tt ggplot2} users}
+\begin{itemize}
+\item ``literate programming: you describe the plot almost in a natural language. It makes it much easier to reuse code and come back to a graph in a few years time without feeling lost.''
+\item ``flexibility, intuitiveness, and logic of the mapping between the data and its representation. Once one gets his mind wrapped around the grammar of graphics concepts (and particularly the aesthetic mapping), figuring out how to best represent a dataset is much easier than with other graphical representation methods.'' 
+\item ``I think the big strength of ggplot2 is graphic-artist quality default output. And an information-focussed point of view.''
+\item \href{https://github.com/hadley/ggplot2/wiki/Why-use-ggplot2}{Lots more reasons here..}
+\end{itemize}
+\end{block}
+
+Today, we will be using very simple {\tt ggplot2} commands.
+
+\end{frame}
+
+\begin{frame}{Tools for reproducible data analysis with R}
+
+\begin{itemize}
+        \item \sout{Version control: git \& GitHub.com}
+        \item Dynamic documents: knitr, RMarkdown, Sweave
+        \item RStudio
+        \item \sout{{\tt ggplot2}}
+\end{itemize}
+
+\end{frame}
 
 
 
