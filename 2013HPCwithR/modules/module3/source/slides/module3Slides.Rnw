@@ -54,14 +54,56 @@
 
 \begin{frame}{MGHPCC}
 \begin{itemize}
-\item The Massachusetts Green High Performance Computing Center (MGHPCC) is one of these clusters. It currently has capacity for 10,000 nodes, with more space coming online soon.  
+\item The Massachusetts Green High Performance Computing Center (MGHPCC) is one of these clusters. 
 \item Each of the participating instiutions has their own distinct cluster. We will be using the UMass cluster.
 \item In order to connect to this cluster, a user has to be on the UMass campus (or use VPN to the UMass campus.)
 \item We will need to VPN into the UMass network since we are currently off campus.  
 \end{itemize}
 \end{frame}
 
-\begin{frame}{How to login using VPN}
+
+\begin{frame}{Hypothetical cluster computing workflow}
+
+\begin{itemize}
+        \item Transfer data/scripts to cluster
+        \item Log in to the cluster
+        \item Submit a job to the ``scheduler''
+        \item Transfer data/results from cluster if needed
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{The process we will use today}
+
+\begin{block}{Our order of operations...}
+\begin{itemize}
+        \item Log in to the cluster
+        \item Transfer data/scripts to cluster
+        \item Submit a job to the ``scheduler''
+        \item Look at results
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}{The process we will use today}
+
+\begin{block}{Our order of operations...}
+\begin{itemize}
+        \item {\bf Log in to the cluster}
+        \item Transfer data/scripts to cluster
+        \item Submit a job to the ``scheduler''
+        \item Look at results
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+
+
+\begin{frame}{How to pretend you are at UMass using VPN}
 \begin{itemize}
 \item Mac: System Preferences $>$ Network $>$ VPN on left 
 \item Windows: Cisco VPN client
@@ -103,6 +145,18 @@
 
 
 
+\begin{frame}{The process we will use today}
+
+\begin{block}{Our order of operations...}
+\begin{itemize}
+        \item Log in to the cluster
+        \item {\bf Transfer data/scripts to cluster}
+        \item Submit a job to the ``scheduler''
+        \item Look at results
+\end{itemize}
+\end{block}
+
+\end{frame}
 
 
 
@@ -114,6 +168,19 @@
 \end{itemize}
 \end{frame}
 
+
+\begin{frame}{The process we will use today}
+
+\begin{block}{Our order of operations...}
+\begin{itemize}
+        \item Log in to the cluster
+        \item Transfer data/scripts to cluster
+        \item {\bf Submit a job to the ``scheduler''}
+        \item Look at results
+\end{itemize}
+\end{block}
+
+\end{frame}
 
 
 
@@ -214,37 +281,23 @@
 
 \begin{frame}{Submiting jobs to the cluster: Local}
 \begin{itemize}
-\item An example shell script is below. 
-\item Here we submit to the parallel queue.
-\item Commands to submit is same as before: bsub < example.sh
+\item An example shell script is in \\ {\tt BiPSandbox/module3/submitLocalParallelJob.sh}. 
+\item Here we submit to the short queue.
+\item Commands to submit from within a .sh file is the same as when submitting from the command line: \\ {\tt bsub $<$ submitLocalParallelJob.sh}
 \end{itemize}
-{\tt \#!/bin/bash\\
-\#BSUB -R rusage[mem=2048] \# ask for memory\\
-\#BSUB -R span[hosts=1]    \# all the cores on one machine\\
-\#BSUB -W 0:10             \# not sure what this is doing\\
-\#BSUB -q short  \# which queue we want to run in\\
 
-module load R/3.0.1\\
-R CMD BATCH /home/gjm43a/BiP/localParallelPermTest.R}
 \end{frame}
 
 \begin{frame}{Submiting jobs to the cluster: Distributed}
 \begin{itemize}
 \item We can also specify options in the shell script that we submit to the LSF scheduler.  
-\item An example shell script is below. 
-\item Commands to submit: bsub $<$ example.sh
+\item An example shell script is in \\
+{\tt BiPSandbox/module3/submitDistrParallelJob.sh}. 
+\item Commands to submit is again: \\ {\tt bsub $<$ submitDistrParallelJob.sh}
+\item ``Proper'' way to distribute your job is using something like MPI.
+\item In this example, output is also distributed, less convenient.
 \end{itemize}
-{\tt \#!/bin/bash\\
-\#BSUB -n 100\\
-\#BSUB -R rusage[mem=2048] \# ask for memory\\
-\#BSUB -W 0:10\\
-\#BSUB -q {\bf parallel}  \# which queue we want to run in
 
-module load R/3.0.1\\
-R CMD BATCH /home/gjm43a/BiP/distrParallelPermTest.R /home/gjm43a/BiP/file1.Rout\\
-R CMD BATCH /home/gjm43a/BiP/distrParallelPermTest.R /home/gjm43a/BiP/file2.Rout\\
-R CMD BATCH /home/gjm43a/BiP/distrParallelPermTest.R /home/gjm43a/BiP/file3.Rout\\
-R CMD BATCH /home/gjm43a/BiP/distrParallelPermTest.R /home/gjm43a/BiP/file4.Rout}
 \end{frame}
 
 
