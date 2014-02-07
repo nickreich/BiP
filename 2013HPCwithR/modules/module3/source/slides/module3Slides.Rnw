@@ -12,15 +12,15 @@
 %		(Currently unused, may be used in future.)
 \newcommand{\ModuleShortname}{shortName}
 %	Global variable containing author name:
-\author{Andrea Foulkes, Gregory Matthews, Nicholas Reich}
+\author{Andrea S Foulkes, Gregory J Matthews, Nicholas G Reich}
 %	Global variable containing text of license terms:
 \newcommand{\LicenseText}{Made available under the Creative Commons Attribution-ShareAlike 3.0 Unported License: http://creativecommons.org/licenses/by-sa/3.0/deed.en\textunderscore US }
 %	Instructor: optional, can leave blank.
 %		Recommended format: {Instructor: Jane Doe}
-\newcommand{\Instructor}{}
+\newcommand{\Instructor}{7 February 2014}
 %	Course: optional, can leave blank.
 %		Recommended format: {Course: Biostatistics 101}
-\newcommand{\Course}{Biostatistics in Practice: Research Training in High-Performance Computing with R}
+\newcommand{\Course}{Biostatistics in Practice: High-Performance Computing with R}
 
 
 
@@ -39,7 +39,7 @@
 \begin{frame}{Overview}
 \begin{itemize}
 \item Parallel computing allows us (for certain problems) to split a big job up into many smaller parts and run them in parallel.  
-\item Our laptops or desktops can split a job up into as many processors as are available.  
+\item Our laptops or desktops can split a job up into as many threads as are available.  
 \item This is likely a relatively small number like 4, 8, or 12. 
  \end{itemize}
 \end{frame}
@@ -54,22 +54,22 @@
 
 \begin{frame}{MGHPCC}
 \begin{itemize}
-\item The Massachusetts Green High Performance Computing Center (MGHPCC) (MGHPCC) is one of these clusters.  
+\item The Massachusetts Green High Performance Computing Center (MGHPCC) is one of these clusters. It currently has capacity for 10,000 nodes, with more space coming online soon.  
 \item Each of the participating instiutions has their own distinct cluster. We will be using the UMass cluster.
 \item In order to connect to this cluster, a user has to be on the UMass campus (or use VPN to the UMass campus.)
 \item We will need to VPN into the UMass network since we are currently off campus.  
 \end{itemize}
 \end{frame}
 
-\begin{frame}{VPN information}
+\begin{frame}{How to login using VPN}
 \begin{itemize}
-\item Mac: System Preferences > Network > VPN on left 
+\item Mac: System Preferences $>$ Network $>$ VPN on left 
 \item Windows: Cisco VPN client
 \begin{itemize}
 \item Server address: vpn2.oit.umass.edu 
 \item Group name: umass
 \item Password: vpn4umass
-\item Account name: UMass user ID OR bip(number) (temporary for BIP2014)
+\item Account name: UMass user ID OR bip[number] (temporary for BIP2014)
 \item Password: Enter your password
 \end{itemize}
 \end{itemize}
@@ -79,8 +79,8 @@
 \begin{frame}{Accessing the MGHPCC}
 \begin{itemize}
 \item Register for the MGHPCC (for UMass): https://www.umassrc.org/hpc/
-\item A login and password will be assigned to you. 
-\item This will be different than your UMass user ID or email address.
+\item A login and password will be (have been?) assigned to you. 
+\item At the moment, this will be different than your UMass user ID or email address. (NetID integration coming soon!)
 \end{itemize}
 \end{frame}
 
@@ -93,9 +93,9 @@
 \end{itemize}
 \item Windows
 \begin{itemize}
-\item PuTTy: ghpcc06.umassrc.org (you will be prompted for user name and password)
+\item PuTTY: ghpcc06.umassrc.org (you will be prompted for user name and password)
 \end{itemize}
-\item Enter password when prompted.  
+\item Enter password when prompted. (First time you login, you will need to change your password, then login again.)  
 \item You are now connected to the cluster!
 \item Remember: You can only access the MGHPCC if you are on UMass's network (physically on campus or VPN)
 \end{itemize}
@@ -117,7 +117,7 @@
 
 
 
-\begin{frame}{Software}
+\begin{frame}{Software available on the MGHPCC}
 \begin{itemize}
 \item Once logged in, you will be placed in your home directory (/home/username). 
 \item Full list of available software: http://wiki.umassrc.org/wiki/index.php/Provided\_Software  
@@ -125,19 +125,19 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Software}
+\begin{frame}{Using software on the MGHPCC}
 \begin{itemize}
 \item In order to use software on the server, you'll need to load modules that contain the software.  
 \item We are interested in using R here.  
-\item To load R we use the command: module load R/3.0.1
-\item We can also unload R with the command:  module unload R
+\item To load R we use the command: {\tt module load R/3.0.1}
+\item We can also unload R with the command:  {\tt module unload R}
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Software}
 \begin{itemize}
 \item Loading the R module will allow us to run R interactively (by typing R at the prompt) on the MGHPCC servers.  
-\item But this isn't really the best use of the cluster.  
+\item But you should not do this!
 \end{itemize}
 \end{frame}
 
@@ -145,9 +145,9 @@
 \begin{itemize}
 \item Rather than running R code interactively, we can also run R in BATCH mode. 
 \item This first requires you to write an R script that you want to run.  
-\item Then at the command prompt, we submit the script by typing: R CMD BATCH [options] scriptName.R
-\item But we don't really want to do this either.  
-\item We want to submit batch jobs to the cluster.  
+\item Then at the command prompt, you can submit the script by typing: {\tt R CMD BATCH [options] scriptName.R}
+\item But you should not do this either!
+\item We want to submit batch jobs to the cluster, not to the machine that you login to.  
 \end{itemize}
 \end{frame}
 
@@ -166,12 +166,12 @@
 
 \begin{frame}{LSF common commands}
 \begin{itemize}
-\item bsub - submit a job
-\item bkill - kill a job
-\item bjobs - view status of jobs
-\item bpeek - view output / error files
-\item bhist - job history
-\item bqueues - available queues
+\item {\tt bsub} - submit a job
+\item {\tt bkill} - kill a job
+\item {\tt bjobs} - view status of jobs
+\item {\tt bpeek} - view output / error files
+\item {\tt bhist} - job history
+\item {\tt bqueues} - available queues
 \end{itemize}
 \end{frame}
 
@@ -232,7 +232,7 @@ R CMD BATCH /home/gjm43a/BiP/localParallelPermTest.R}
 \begin{itemize}
 \item We can also specify options in the shell script that we submit to the LSF scheduler.  
 \item An example shell script is below. 
-\item Commands to submit: bsub < example.sh
+\item Commands to submit: bsub $<$ example.sh
 \end{itemize}
 {\tt \#!/bin/bash\\
 \#BSUB -n 100\\
