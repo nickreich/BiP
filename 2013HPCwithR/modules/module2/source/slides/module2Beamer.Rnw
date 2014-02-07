@@ -20,10 +20,10 @@
 \newcommand{\LicenseText}{Made available under the Creative Commons Attribution-ShareAlike 3.0 Unported License: http://creativecommons.org/licenses/by-sa/3.0/deed.en\_US }
 %	Instructor: optional, can leave blank.
 %		Recommended format: {Instructor: Jane Doe}
-\newcommand{\Instructor}{}
+\newcommand{\Instructor}{7 February 2014}
 %	Course: optional, can leave blank.
 %		Recommended format: {Course: Biostatistics 101}
-\newcommand{\Course}{Biostatistics in Practice: Research Training in High-Performance Computing with R}
+\newcommand{\Course}{Biostatistics in Practice: High-Performance Computing with R}
 
 %%%%%%%% IMPORTANT -- MUST HAVE [fragile] for some/all frames chunks to have output work correctly. 
 
