@@ -181,13 +181,16 @@ FWER=Pr(\text{reject at least one }H_0^k \; | \text{all } H_0^k \text{ are true}
 
 \begin{frame}{Lab Assignment}
 \begin{enumerate}
-\item Conduct a simulation study to identify an appropriate p-value threshold for statistical significance (assuming independence of SNPs):
+\item Conduct a simulation study to identify an appropriate p-value threshold for statistical significance of the minimum p-value (assuming independence of SNPs):
 \begin{itemize}
 	\item generate $965,220$ p-values from a uniform distribution
-	\item determine value corresponding to the $5$th percentile
+	\item determine value corresponding to the minimum
 	\item repeat $500$ times and record $5$th percentile of this distn.
 	\end{itemize}
-\item Repeat (1) while accounting for within gene correlation
+\item Repeat (1) for the second smallest p-value, the third smallest, etc.
+\item Challenge Problems:
+  \begin{itemize}
+  \item Repeat (1) while accounting for within gene correlation
 	\begin{itemize}
 	\item assume inverse normally transformed p-values ($p_{ij}$) arise from a random effects model (i indicates gene and j indicates SNP):
 	
@@ -199,6 +202,7 @@ FWER=Pr(\text{reject at least one }H_0^k \; | \text{all } H_0^k \text{ are true}
 	 
 	\end{itemize}
 \item Repeat (2) where the random gene level effects arise from a $N(0,\sigma_b^2)$ and $\sigma_b^2$ ranges from 0.2 to 1.2 in increments of 0.2. 
+\end{itemize}
 \end{enumerate} 
 \end{frame}
 
@@ -212,41 +216,55 @@ print(cardioDat[1:10,])
 \end{frame}
 
 \begin{frame}[fragile]
-{\sc Excersie 1:} Conduct a simulation study to identify an appropriate p-value threshold for statistical significance (assuming independence of SNPs):
+{\sc Exercise 1:} Conduct a simulation study to identify an appropriate p-value threshold for statistical significance of the minimum p-value (assuming independence of SNPs):
 \begin{itemize}
   \item generate $965,220$ p-values from a uniform distribution
-  \item determine value corresponding to the $5$th percentile
-	\item repeat $500$ times and record $5$th percentile of this distn.
+  \item determine value corresponding to the minimum
 	\end{itemize}
   
   <<simP>>=
 sim1 <- runif(nrow(cardioDat))  
+sort(sim1)[nrow(cardioDat)*0.05]
 @
+\begin{itemize}
+\item repeat $500$ times and record $5$th percentile of this distn of minimums
+\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
-<<simPparallel>>==
+
+<<simPparallel,message=FALSE>>==
 ## locally parallelized permutation test
 ## BiP HPC workshop 2014
 
 require(doMC)
 require(foreach)
-nSim <- 100 ## number of permutations
+nSim <- 500 ## number of simulations
 nCores <- 10
-
 registerDoMC(nCores)
-
-#setwd("/Users/nick/Documents/code_versioned/BiP/2013HPCwithR/modules/module2/labs/")
 #setwd("/home/ngr67a/BiP/")
-
-## run permutation loop, storing each time
+@
+Run simulation loop, storing minimum each time
+<<simPparallel2>>==
 matNullP <- foreach(i=1:nSim, .combine=rbind) %dopar% {
         sim <- runif(nrow(cardioDat)) 
-        c(i, sort(sim)[nrow(cardioDat)*0.05])
+        c(i, min(sim))
 }
+  @
 
-write.csv(mat, file="coefs.csv", row.names=FALSE)
+\end{frame}
+
+\begin{frame}[fragile]
+Determine 5th percentile of the distribution of minimum p-values:
+<<Pcutoff>>==
+sort(matNullP[,2])[nSim*0.05]
+@
+
+Compare to minimum observed pvalue in Cardiogram
+<<Compare>>==
+cardioDat[cardioDat[,4]==min(cardioDat[,4]),]
 @
 \end{frame}
+
 
 \end{document}
