@@ -28,10 +28,6 @@
 
 \begin{document}
 
-%	Title page
-\begin{frame}[plain]
-	\titlepage
-\end{frame}
 
 
 
@@ -50,6 +46,14 @@ Data Sciences for the Life Sciences in a High Performance Computing Environment
 \bigskip
 \scriptsize \emph{Sponsored by the {\bf Graduate Program in Biostatistics at UMass Amherst}, the UMass Institute for Computational Biology, Biostatistics and Bioinformatics (ICB3) and the Massachusetts Green High Performance Computing Center (MGHPCC).}
 \end{frame}
+
+
+%        Title page
+\begin{frame}[plain]
+        \titlepage
+\end{frame}
+
+
 
 \begin{frame}{Agenda}
 
@@ -88,13 +92,41 @@ Data Sciences for the Life Sciences in a High Performance Computing Environment
 \end{enumerate}
 }\end{frame}
 
+
+
 \begin{frame}{Special Thanks...}
+
+\begin{block}{Individuals making this possible}
 \begin{itemize}
 \item John Goodhue
 \item Claire Christopherson
+\item Karen Utgoff
 \item Ralph Zottola
-\item Al Ritacco
+\item Al Ritacco \& Chris Hull
+\item UMass OIT 
+\begin{itemize}
+\item Chris Misra
+\item Jim Mileski
+\item Jason Houghton
+\item Genti Lagji
 \end{itemize}
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Special Thanks...}
+
+\begin{block}{Support provided by:}
+\begin{itemize}
+\item President's office S\&T Initiative
+\item Vice Chancellor Research \& Engagement
+\item UMass College of Natural Sciences
+\item UMass School of Public Health and Health Sciences
+\item MGHPCC
+\item UMass Graduate Program in Biostatistics
+\end{itemize}
+\end{block}
 \end{frame}
 
 \begin{frame}{Introductions}
@@ -116,6 +148,45 @@ Teaching Assistants:
 \item Eric Reed
 \end{itemize}
 \end{frame}
+
+
+\begin{frame}{Where we are coming from}
+
+\begin{itemize}
+        \item UMass-Amherst
+                \begin{itemize}
+                        \item Biostatistics
+                        \item Mathematics and Statistics
+                        \item Linguistics
+                        \item Landscape Ecology
+                        \item Veterinary and Animal Sciences Department
+                        \item Political Science
+                        \item Resource Economics
+                        \item Biology
+                        \item Organismic and Evolutionary Biology
+                        \item Environmental Conservation
+                \end{itemize}                
+        \item UMass Medical School: Quantitative Health Sciences
+        \item Babson College
+        \item Northeastern University
+        \item Framingham Heart Study
+        \item Boston University
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Diverse background in R}
+
+\begin{figure}[t]
+    \includegraphics[width=\textwidth]{figures/Rbackground1}  
+\end{figure}
+\begin{figure}[t]
+    \includegraphics[width=\textwidth]{figures/Rbackground2}  
+\end{figure}
+
+\end{frame}
+
 
 \begin{frame}{Principles of Reproducible Research -- Definition}
 \emph{Reproducible research has been defined in the scientific community as published scientific work that can be recreated using code and data made available by the authors:} 
@@ -140,7 +211,7 @@ Teaching Assistants:
 \begin{frame}{Principles of Reproducible Research -- Training}
 Foundational training in reproducible research includes rigorous instruction in:
 \begin{enumerate}
-\item Analysis and visualization of data through literate programming (Module 1);
+\item Analysis and visualization of data through literate programming (Module 1 \& 2);
 \item Dissemination of open-source and extensible code, documentation, and, whenever possible, data \\ (Modules 1 \& 2);
 \item Basic statistical literacy, including characterization of uncertainty using sound statistical and computational principles (Modules 2, 3 \& 4).
 \end{enumerate}
@@ -149,14 +220,94 @@ Foundational training in reproducible research includes rigorous instruction in:
 
 \begin{frame}{Tools for reproducible data analysis with R}
 
+\begin{block}{Topics}
 \begin{itemize}
-        \item Version control: git \& GitHub.com
+        \item R/RStudio
+       \item Version control: git \& GitHub.com
+         \item ggplot2
         \item Dynamic documents: knitr, RMarkdown, Sweave
-        \item RStudio
-        \item ggplot2
-\end{itemize}
+ \end{itemize}
+\end{block}
 
 \end{frame}
+
+
+
+%Opening R - some basics (getwd setwd)
+%Data Management
+\begin{frame}{Introduction to R}
+What is R?
+\begin{itemize}
+\item R is a language and environment for statistical computing and graphics. 
+\item Website: www.r-project.org
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%
+\begin{frame}{Introduction to R}
+Pros
+\begin{itemize}
+\item R is free.
+\item There are many packages for R.  Chances are someone has written it already. 
+\item Many cutting edge techniques are available very quickly.  
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%
+
+\begin{frame}{Introduction to R}
+Cons
+\begin{itemize}
+\item R is free.  This means there is no support for R.  
+\item This also means that you use a package at your own risk and you trust the author wrote the code correctly.  
+\item Takes a little while to learn.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%
+%\begin{frame}
+%\includegraphics[scale=.54]{twitterMap.pdf}
+%\end{frame}
+\begin{frame}
+\frametitle{RStudio}
+What is Rstudio$^{TM}$?
+\begin{itemize}
+\item RStudio? is a free and open source integrated development environment (IDE) for R.
+\item rstudio.org
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{RStudio}
+
+Demo...
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%
+
+
+
+\begin{frame}{Tools for reproducible data analysis with R}
+
+\begin{block}{Topics}
+\begin{itemize}
+        \item R/RStudio
+       \item Version control: git \& GitHub.com
+         \item ggplot2
+        \item Dynamic documents: knitr, RMarkdown, Sweave
+ \end{itemize}
+\end{block}
+
+\end{frame}
+
 
 \begin{frame}{Version control systems}
 
@@ -264,12 +415,14 @@ Foundational training in reproducible research includes rigorous instruction in:
 
 \begin{frame}{Tools for reproducible data analysis with R}
 
+\begin{block}{Topics}
 \begin{itemize}
-        \item Version control: git \& GitHub.com
+        \item R/RStudio
+       \item Version control: git \& GitHub.com
+         \item ggplot2
         \item Dynamic documents: knitr, RMarkdown, Sweave
-        \item RStudio
-        \item {\tt ggplot2}
-\end{itemize}
+ \end{itemize}
+\end{block}
 
 \end{frame}
 
@@ -291,128 +444,19 @@ Today, we will be using very simple {\tt ggplot2} commands.
 
 \begin{frame}{Tools for reproducible data analysis with R}
 
+\begin{block}{Topics}
 \begin{itemize}
-        \item Version control: git \& GitHub.com
+        \item R/RStudio
+       \item Version control: git \& GitHub.com
+         \item ggplot2
         \item Dynamic documents: knitr, RMarkdown, Sweave
-        \item RStudio
-        \item {\tt ggplot2}
-\end{itemize}
+ \end{itemize}
+\end{block}
 
 \end{frame}
 
 
 
-
-%Opening R - some basics (getwd setwd)
-%Data Management
-\begin{frame}
-What is R?
-\begin{itemize}
-\item R is a language and environment for statistical computing and graphics. 
-\item Website: www.r-project.org
-\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%
-\begin{frame}
-Pros
-\begin{itemize}
-\item R is free.
-\item There are many packages for R.  Chances are someone has written it already. 
-\item Many cutting edge techniques are available very quickly.  
-\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%
-
-\begin{frame}
-Cons
-\begin{itemize}
-\item R is free.  This means there is no support for R.  
-\item This also means that you use a package at your own risk and you trust the author wrote the code correctly.  
-\item Takes a little while to learn.
-\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%
-
-
-%%%%%%%%%%%%%
-%\begin{frame}
-%\includegraphics[scale=.54]{twitterMap.pdf}
-%\end{frame}
-\begin{frame}
-\frametitle{R Studio}
-What is Rstudio$^{TM}$?
-\begin{itemize}
-\item RStudio? is a free and open source integrated development environment (IDE) for R.
-\item rstudio.org
-\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%
-
-\begin{frame}
-\frametitle{Rstudio}
-\begin{itemize}
-\item When you open up Rstudio the screen is divided into 4 parts
-\begin{itemize}
-\item Source (Upper Left)
-\item Console (Lower Left)
-\item Workspace/History (Upper Right)
-\item Files/Plots/Packages/{\bf Help}
-\end{itemize}
-\item 'Help' is your best friend. Every function in R has a help file.  
-\item You can either search for a function (lm) or type: help(lm).  Both take you to the same place.  (lower right of R studio)
-\item ls() lists all the current object (Upper right of R studio)
-\end{itemize}
-\end{frame}
-
-
-
-%%%%%%%%%%%%%
-
-\begin{frame}
-\frametitle{Source}
-Upper Left box
-\begin{itemize}
-\item This is where we will type R code.  
-\item To run R code click the "Run" button or type "Command-Enter"
-\end{itemize}
-\end{frame}
-%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Console}
-Lower Left box
-\begin{itemize}
-\item This displays the code that has run and the output.  
-\item We can either run code from the source box or by typing directly into the console
-\end{itemize}
-\end{frame}
-%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Workspace/History}
-Upper Right box
-\begin{itemize}
-\item The workspace tab displays all of the R objects that have been created in this session and describes them 
-\item we can view the data in the source window by clicking to the right of the appropriate row in the workspace window
-\item we can also view the data in the console by typing the name of the object that we are interested in viewing and hitting enter.  
-\item the history tab displays all of the commands that have been run in the console
-\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%
-
-\begin{frame}
-\frametitle{Files/Plots/Packages/Help}
-Lower Right box
-\begin{itemize}
-\item Files: Allows you to look for files.  This is like Windows Explorer (or Finder, for Mac Users)
-\item Plots: Manages all of your plots that are created.
-\item Packages: Functions come in packages and you need to install and load the correct package to use a function.  This tab allows you to manage which packages are loaded.  
-\item {\bf Help}:  If you don't understand how to use a function, this allows you to get help (Can also get here by typing "help(lm)" which will give you the help file for the function "lm" used for linear modeling).
-\end{itemize}
-\end{frame}
 
 
 
